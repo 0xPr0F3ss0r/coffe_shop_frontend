@@ -14,10 +14,19 @@ class LoginScreen extends StatelessWidget {
           Positioned(
             top: 35,
             child: Container(
-              decoration: BoxDecoration(color: Colors.grey),
+              decoration: BoxDecoration(color: Colors.white),
               child: ClipPath(
                 clipper: TopWaveClipper(),
-                child: Image.asset("assets/toplogin.png"),
+                child: Opacity(
+                  opacity: 0.9,
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      const Color(0XFFB19E90).withOpacity(0.6), // اللون المطلوب
+                      BlendMode.modulate, // أو جرب BlendMode.modulate
+                    ),
+                    child: Image.asset("assets/buttonlogin1.png"),
+                  ),
+                ),
               ),
             ),
           ),
@@ -249,26 +258,32 @@ class TopWaveClipper extends CustomClipper<Path> {
 
     // الجبل الأول (يبدأ من اليمين)
     path.quadraticBezierTo(
-      size.width * 0.8, // نقطة التحكم - قمة الجبل الأول
+      size.width * 0.78, // نقطة التحكم - قمة الجبل الأول
       size.height * 0.7, // ارتفاع قمة الجبل الأول (اقتصاص أكثر)
-      size.width * 0.6, // نهاية الجبل الأول
+      size.width * 0.62, // نهاية الجبل الأول
       size.height * 0.3, // النزول من الجبل الأول
     );
 
     // الوادي (منحنى للأسفل)
     path.quadraticBezierTo(
-      size.width * 0.3, // نقطة التحكم - وسط الوادي
+      size.width * 0.55, // نقطة التحكم - وسط الوادي
       size.height * 0.2, // عمق الوادي (اقتصاص أقل)
-      size.width * 0.2, // نهاية الوادي
-      size.height * 0.2, // الصعود من الوادي
+      size.width * 0.4, // نهاية الوادي
+      size.height * 0.4, // الصعود من الوادي
     );
 
-    // // الجبل الثاني (منحنى للأعلى)
     path.quadraticBezierTo(
-      size.width * 0.1, // نقطة التحكم - قمة الجبل الثاني
-      size.height * 0.7, // ارتفاع قمة الجبل الثاني (اقتصاص أكثر)
-      size.width * 0.1, // نهاية الجبل الثاني (الحافة اليسرى)
-      size.height * 0.1, // النهاية في الحافة اليسرى
+      size.width * 0.25,
+      size.height * 0.6, // control point (higher for a mountain)
+      size.width * 0.04,
+      size.height * 0.12, // end point (left edge)
+    );
+
+    path.quadraticBezierTo(
+      size.width * 0.02,
+      size.height * 0.1,
+      0,
+      size.height * 0.098,
     );
 
     // // إغلاق المسار
