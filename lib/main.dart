@@ -1,4 +1,6 @@
-import 'package:coffe_shop_ui/view/login.dart';
+import 'package:coffe_shop_ui/view/Pages/Home.dart';
+import 'package:coffe_shop_ui/view/authentication/login.dart';
+import 'package:coffe_shop_ui/view/authentication/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: Home(),
     );
   }
 }
