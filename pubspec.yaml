@@ -67,6 +67,9 @@ flutter:
     - assets/Vector.png
     - assets/profile.png
     - assets/Home.png
+    - assets/location.png
+    - assets/phone.png
+    - assets/Search.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
