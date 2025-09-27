@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:coffe_shop_ui/constant/Colors.dart';
+import 'package:coffe_shop_ui/widgets/Categories.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -88,6 +89,69 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 18,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Categories(
+                  textcolor: colors.categorieInActive,
+                  name: "COFFEE",
+                  image: "Coffe",
+                  color: colors.categorieActive,
+                ),
+                SizedBox(width: 10),
+                Categories(
+                  textcolor: colors.inactive,
+                  name: "DESSERTS",
+                  image: "pancake",
+                  color: colors.categorieInActive,
+                ),
+                SizedBox(width: 10),
+                Categories(
+                  textcolor: colors.inactive,
+                  name: "JUS",
+                  image: "jus",
+                  color: colors.categorieInActive,
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Categories(
+                  textcolor: colors.inactive,
+                  name: "JUS FREE",
+                  image: "jus2",
+                  color: colors.categorieInActive,
+                ),
+                SizedBox(width: 10),
+                Categories(
+                  textcolor: colors.inactive,
+                  name: "BREAKFAST",
+                  image: "breakfast",
+                  color: colors.categorieInActive,
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              height: 50,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(height: 50, width: 50, color: Colors.blue),
+                  );
+                },
               ),
             ),
           ],

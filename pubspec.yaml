@@ -70,6 +70,12 @@ flutter:
     - assets/location.png
     - assets/phone.png
     - assets/Search.png
+    - assets/Coffe.png
+    - assets/breakfast.png
+    - assets/Coffe.png
+    - assets/jus.png
+    - assets/jus2.png
+    - assets/pancake.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
