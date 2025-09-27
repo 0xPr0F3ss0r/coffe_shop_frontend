@@ -16,8 +16,9 @@ class _HomeState extends State<Home> {
   int pageIndex = 0;
   final pages = [
     const HomePage(),
-    const Profile(),
     const Favourite(),
+    const Profile(),
+
     const CardPage(),
   ];
 

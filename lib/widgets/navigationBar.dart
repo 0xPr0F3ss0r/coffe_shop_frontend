@@ -24,7 +24,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return Stack(
       children: [
         Container(
-          height: 80,
+          height: 77,
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 0.1, color: Colors.grey),
