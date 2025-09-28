@@ -40,14 +40,30 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                       onTap: () {
                         controller.onPageChange(0);
                       },
-                      child: Image.asset(
-                        "assets/Home.png",
-                        color: controller.pageIndex.value == 0
-                            ? colors.navBarActive
-                            : colors.navBarDesactive,
-                        height: 24,
-                        width: 24,
-                      ),
+                      child: controller.pageIndex.value == 0
+                          ? ShaderMask(
+                              shaderCallback: (Rect bounds) {
+                                return LinearGradient(
+                                  colors: [
+                                    Color(0xFFCB8A58),
+                                    Color(0xFF562B1A),
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                ).createShader(bounds);
+                              },
+                              child: Image.asset(
+                                "assets/Home.png",
+                                height: 24,
+                                width: 24,
+                              ),
+                            )
+                          : Image.asset(
+                              "assets/Home.png",
+                              color: colors.navBarDesactive,
+                              height: 24,
+                              width: 24,
+                            ),
                     ),
                     const SizedBox(height: 2),
                     Text(
@@ -71,13 +87,29 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                       onTap: () {
                         controller.onPageChange(1);
                       },
-                      child: Icon(
-                        Icons.favorite,
-                        color: controller.pageIndex.value == 1
-                            ? colors.navBarActive
-                            : colors.navBarDesactive,
-                        size: 24,
-                      ),
+                      child: controller.pageIndex.value == 1
+                          ? ShaderMask(
+                              shaderCallback: (Rect bounds) {
+                                return LinearGradient(
+                                  colors: [
+                                    Color(0xFFCB8A58),
+                                    Color(0xFF562B1A),
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                ).createShader(bounds);
+                              },
+                              child: Icon(
+                                Icons.favorite,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            )
+                          : Icon(
+                              color: colors.navBarDesactive,
+                              Icons.favorite,
+                              size: 24,
+                            ),
                     ),
                     const SizedBox(height: 2),
                     Text(
@@ -104,14 +136,30 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
-                          Image.asset(
-                            "assets/Vector.png",
-                            color: controller.pageIndex.value == 2
-                                ? colors.navBarActive
-                                : colors.navBarDesactive,
-                            width: 24,
-                            height: 24,
-                          ),
+                          controller.pageIndex.value == 2
+                              ? ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [
+                                        Color(0xFFCB8A58),
+                                        Color(0xFF562B1A),
+                                      ],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Image.asset(
+                                    "assets/Vector.png",
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                )
+                              : Image.asset(
+                                  "assets/Vector.png",
+                                  color: colors.navBarDesactive,
+                                  width: 24,
+                                  height: 24,
+                                ),
                           Positioned(
                             top: -7,
                             right: -10,

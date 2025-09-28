@@ -19,9 +19,8 @@ class _HomeState extends State<Home> {
   final pages = [
     const HomePage(),
     const Favourite(),
-    const Profile(),
-
     const CardPage(),
+    const Profile(),
   ];
 
   @override

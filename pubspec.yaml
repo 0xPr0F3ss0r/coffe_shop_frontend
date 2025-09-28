@@ -83,6 +83,17 @@ flutter:
     - assets/Rectangle10.png
     - assets/productInfo.png
     - assets/star.png
+    - assets/first.png
+    - assets/last.png
+    - assets/second.png
+    - assets/BeforeLast.png
+    - assets/smallStar.png
+    - assets/Coff.png
+    - assets/carbon_delivery.png
+    - assets/gplay.png
+    - assets/masterCard.png
+    - assets/cash.png
+    - assets/carbon_delivery_large.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
