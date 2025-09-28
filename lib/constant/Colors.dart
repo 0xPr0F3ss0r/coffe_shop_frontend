@@ -12,4 +12,5 @@ class colors {
   static const Color inactive = Color(0xFF562B1A);
   static const Color categorieInActive = Color(0xFFFFFFFFF);
   static const Color greyCoffe = Color(0xFF846046);
+  static const Color plusIcon = Color(0xFFCB8A58);
 }

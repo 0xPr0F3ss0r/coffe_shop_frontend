@@ -1,8 +1,10 @@
 // ignore: file_names
 import 'package:coffe_shop_ui/constant/Colors.dart';
+import 'package:coffe_shop_ui/view/ProductInfo/productInfo.dart';
 import 'package:coffe_shop_ui/widgets/Categories.dart';
 import 'package:coffe_shop_ui/widgets/size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -165,107 +167,122 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (BuildContext context, int index) {
                         return Stack(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: colors.greyCoffe,
-                                  width: 0.5,
+                            InkWell(
+                              onTap: () {
+                                Get.to(Productinfo());
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: colors.greyCoffe,
+                                    width: 0.5,
+                                  ),
                                 ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Image.asset(images[index]),
-                                        Positioned(
-                                          top: -10,
-                                          right: -10,
-                                          child: IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.favorite_border,
-                                              color: Colors.white,
-                                              size: 15,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Image.asset(images[index]),
+                                          Positioned(
+                                            top: -10,
+                                            right: -10,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.favorite_border,
+                                                color: Colors.white,
+                                                size: 15,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      name[index],
-                                      textAlign: TextAlign.start,
-                                      style: GoogleFonts.aBeeZee(
-                                        fontWeight: FontWeight.w400,
-                                        height: 20 / 16,
+                                        ],
                                       ),
-                                    ),
-                                    //SizedBox(height: 2),
-                                    index == 0
-                                        ? Row(
-                                            children: [
-                                              ...List.generate(3, (int index) {
-                                                return sizeCoffe(
-                                                  borderColor: colors.greyCoffe,
-                                                  container: index == 0
-                                                      ? colors.greyCoffe
-                                                      : Colors.white,
-                                                  textColor: index == 0
-                                                      ? Colors.white
-                                                      : colors.greyCoffe,
-                                                  index: index,
-                                                  text: ["S", "M", "L"],
-                                                );
-                                              }),
-                                            ],
-                                          )
-                                        : index == 1
-                                        ? Row(
-                                            children: [
-                                              ...List.generate(2, (int index) {
-                                                return sizeCoffe(
-                                                  borderColor: colors.greyCoffe,
-                                                  container: index == 0
-                                                      ? colors.greyCoffe
-                                                      : Colors.white,
-                                                  textColor: index == 0
-                                                      ? Colors.white
-                                                      : colors.greyCoffe,
-                                                  text: ["S", "L"],
-                                                  index: index,
-                                                );
-                                              }),
-                                            ],
-                                          )
-                                        : index == 3
-                                        ? Row(
-                                            children: [
-                                              ...List.generate(3, (int index) {
-                                                return sizeCoffe(
-                                                  borderColor: colors.greyCoffe,
-                                                  container: index == 0
-                                                      ? colors.greyCoffe
-                                                      : Colors.white,
-                                                  textColor: index == 0
-                                                      ? Colors.white
-                                                      : colors.greyCoffe,
-                                                  index: index,
-                                                  text: ["S", "M", "L"],
-                                                );
-                                              }),
-                                            ],
-                                          )
-                                        : SizedBox.shrink(),
-                                  ],
+                                      SizedBox(height: 5),
+                                      Text(
+                                        name[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.aBeeZee(
+                                          fontWeight: FontWeight.w400,
+                                          height: 20 / 16,
+                                        ),
+                                      ),
+                                      //SizedBox(height: 2),
+                                      index == 0
+                                          ? Row(
+                                              children: [
+                                                ...List.generate(3, (
+                                                  int index,
+                                                ) {
+                                                  return sizeCoffe(
+                                                    borderColor:
+                                                        colors.greyCoffe,
+                                                    container: index == 0
+                                                        ? colors.greyCoffe
+                                                        : Colors.white,
+                                                    textColor: index == 0
+                                                        ? Colors.white
+                                                        : colors.greyCoffe,
+                                                    index: index,
+                                                    text: ["S", "M", "L"],
+                                                  );
+                                                }),
+                                              ],
+                                            )
+                                          : index == 1
+                                          ? Row(
+                                              children: [
+                                                ...List.generate(2, (
+                                                  int index,
+                                                ) {
+                                                  return sizeCoffe(
+                                                    borderColor:
+                                                        colors.greyCoffe,
+                                                    container: index == 0
+                                                        ? colors.greyCoffe
+                                                        : Colors.white,
+                                                    textColor: index == 0
+                                                        ? Colors.white
+                                                        : colors.greyCoffe,
+                                                    text: ["S", "L"],
+                                                    index: index,
+                                                  );
+                                                }),
+                                              ],
+                                            )
+                                          : index == 3
+                                          ? Row(
+                                              children: [
+                                                ...List.generate(3, (
+                                                  int index,
+                                                ) {
+                                                  return sizeCoffe(
+                                                    borderColor:
+                                                        colors.greyCoffe,
+                                                    container: index == 0
+                                                        ? colors.greyCoffe
+                                                        : Colors.white,
+                                                    textColor: index == 0
+                                                        ? Colors.white
+                                                        : colors.greyCoffe,
+                                                    index: index,
+                                                    text: ["S", "M", "L"],
+                                                  );
+                                                }),
+                                              ],
+                                            )
+                                          : SizedBox.shrink(),
+                                    ],
+                                  ),
                                 ),
+                                // Let GridView handle the sizing
                               ),
-                              // Let GridView handle the sizing
                             ),
                             Positioned(
                               bottom: 10,
