@@ -1,3 +1,4 @@
+import 'package:coffe_shop_ui/view/ProductInfo/productInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,42 +47,48 @@ class _CardPageState extends State<CardPage> {
                     padding: const EdgeInsets.only(bottom: 15),
                     child: Stack(
                       children: [
-                        Container(
-                          width: 346,
-                          height: 90,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFFFFF),
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xFF000000).withOpacity(0.25),
-                                offset: const Offset(0, 0),
-                                blurRadius: 4,
-                                spreadRadius: 0,
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(images[index]),
-                                SizedBox(width: 5),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(names[index]),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      prices[index],
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(Productinfo());
+                          },
+                          child: Container(
+                            width: 346,
+                            height: 90,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(13),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF000000).withOpacity(0.25),
+                                  offset: const Offset(0, 0),
+                                  blurRadius: 4,
+                                  spreadRadius: 0,
                                 ),
                               ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(images[index]),
+                                  SizedBox(width: 5),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(names[index]),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        prices[index],
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.3.1
   get: ^4.7.2
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +95,16 @@ flutter:
     - assets/masterCard.png
     - assets/cash.png
     - assets/carbon_delivery_large.png
+    - assets/fi-ss-cube.png
+    - assets/fi-ss-record-vinyl.png
+    - assets/fi-ss-thumbs-up.png
+    - assets/fi-ss-truck-side.png
+    - assets/Profile2.png
+    - assets/edit-02.png
+    - assets/shop.png
+    - assets/phoneL.png
+    - assets/carbon_location-filled.png
+    - assets/fi-ss-sign-in.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
