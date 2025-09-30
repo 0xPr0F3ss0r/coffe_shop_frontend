@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:coffe_shop_ui/view/order/orderCreated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -57,13 +59,20 @@ class _orderCardState extends State<orderCard> {
                       ),
 
                       SizedBox(height: 10),
-                      Text(
-                        "YOUR ORDER:",
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF000000),
-                          fontSize: 17,
-                        ),
+                      AnimatedTextKit(
+                        repeatForever: true,
+                        pause: Duration(milliseconds: 500),
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "YOUR ORDER:",
+                            textStyle: GoogleFonts.oswald(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF000000),
+                              fontSize: 17,
+                            ),
+                            speed: Duration(seconds: 2),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 25),
                       ...List.generate(2, (int index) {
@@ -114,6 +123,22 @@ class _orderCardState extends State<orderCard> {
                                     ],
                                   ),
                                 ),
+                              ).animate(
+                                onPlay: (controller) =>
+                                    controller.repeat(reverse: true),
+                                effects: [
+                                  FadeEffect(
+                                    begin: 1.0,
+                                    end: 0.2,
+                                    curve: Curves.easeInQuart,
+                                    delay: Duration(seconds: 1),
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                  ShimmerEffect(
+                                    blendMode: BlendMode.hardLight,
+                                    delay: Duration(seconds: 1),
+                                  ),
+                                ],
                               ),
                               Positioned(
                                 top: 15,
@@ -259,14 +284,21 @@ class _orderCardState extends State<orderCard> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(
-                            "Total: 14\$",
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.oswald(
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF000000),
-                              fontSize: 17,
-                            ),
+                          AnimatedTextKit(
+                            repeatForever: true,
+                            pause: Duration(milliseconds: 500),
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                "Total: 14\$",
+                                textAlign: TextAlign.end,
+                                textStyle: GoogleFonts.oswald(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF000000),
+                                  fontSize: 17,
+                                ),
+                                speed: Duration(seconds: 5),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -278,35 +310,51 @@ class _orderCardState extends State<orderCard> {
                   onTap: () {
                     Get.to(orderCreated());
                   },
-                  child: Container(
-                    height: 80,
-                    decoration: BoxDecoration(color: Colors.black),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 22, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Create Order",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
+                  child:
+                      Container(
+                        height: 80,
+                        width: MediaQuery.sizeOf(context).width,
+                        decoration: BoxDecoration(color: Colors.black),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 22, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Create Order",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
 
-                          Spacer(),
-                          IconButton(
-                            alignment: AlignmentDirectional.centerEnd,
-                            onPressed: () {
-                              Get.to(orderCreated());
-                            },
-                            icon: Icon(
-                              Icons.arrow_forward_ios_sharp,
-                              color: Colors.white,
-                            ),
+                              Spacer(),
+                              IconButton(
+                                alignment: AlignmentDirectional.centerEnd,
+                                onPressed: () {
+                                  Get.to(orderCreated());
+                                },
+                                icon: Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ).animate(
+                        onInit: (controller) => controller = controller,
+                        delay: Duration(seconds: 1),
+                        onPlay: (controller) =>
+                            controller.repeat(reverse: true),
+                        effects: [
+                          ShimmerEffect(
+                            blendMode: BlendMode.hardLight,
+                            delay: Duration(seconds: 1),
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ),
               ],
             ),

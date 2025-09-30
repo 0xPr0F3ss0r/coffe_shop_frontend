@@ -1,6 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:coffe_shop_ui/constant/Colors.dart';
 import 'package:coffe_shop_ui/view/ProductInfo/productInfoFav.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
 class Favourite extends StatefulWidget {
@@ -10,7 +12,8 @@ class Favourite extends StatefulWidget {
   State<Favourite> createState() => _FavouriteState();
 }
 
-class _FavouriteState extends State<Favourite> {
+class _FavouriteState extends State<Favourite>
+    with SingleTickerProviderStateMixin {
   List<String> images = [
     "assets/first.png",
     "assets/second.png",
@@ -52,7 +55,20 @@ class _FavouriteState extends State<Favourite> {
                       Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search ..",
+                            hint: AnimatedTextKit(
+                              repeatForever: true,
+                              pause: Duration(milliseconds: 500),
+                              animatedTexts: [
+                                TyperAnimatedText(
+                                  "Search ..",
+                                  textStyle: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                  speed: Duration(seconds: 5),
+                                ),
+                              ],
+                            ),
                             hintStyle: TextStyle(
                               fontSize: 12,
                               color: colors.hint,
@@ -77,44 +93,67 @@ class _FavouriteState extends State<Favourite> {
                     onTap: () {
                       Get.to(ProductinfoFav());
                     },
-                    child: Container(
-                      width: 346,
-                      height: 90,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
-                        borderRadius: BorderRadius.circular(13),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFF000000).withOpacity(0.25),
-                            offset: const Offset(0, 0),
-                            blurRadius: 4,
-                            spreadRadius: 0,
+                    child:
+                        Container(
+                          width: 346,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFFFFF),
+                            borderRadius: BorderRadius.circular(13),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xFF000000).withOpacity(0.25),
+                                offset: const Offset(0, 0),
+                                blurRadius: 4,
+                                spreadRadius: 0,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(images[index]),
-                            SizedBox(width: 5),
-                            Column(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(names[index]),
-                                SizedBox(height: 5),
-                                Text(prices[index]),
-                                SizedBox(height: 5),
-                                Icon(Icons.favorite, color: Colors.red),
+                                Image.asset(images[index]),
+                                SizedBox(width: 5),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(names[index]),
+                                    SizedBox(height: 5),
+                                    Text(prices[index]),
+                                    SizedBox(height: 5),
+                                    Icon(Icons.favorite, color: Colors.red),
+                                  ],
+                                ),
                               ],
                             ),
+                          ),
+                        ).animate(
+                          delay: Duration(seconds: 2),
+                          onPlay: (controller) => controller.repeat(
+                            reverse: true,
+                            period: Duration(seconds: 6),
+                          ),
+                          effects: [
+                            ElevationEffect(
+                              duration: Duration(seconds: 2),
+                              curve: Curves.bounceOut,
+                            ),
+                            RotateEffect(
+                              delay: Duration(seconds: 2),
+                              curve: Curves.decelerate,
+                            ),
+
+                            ShaderEffect(
+                              delay: Duration(seconds: 2),
+                              curve: Curves.easeIn,
+                            ),
+                            ShaderEffect(duration: Duration(seconds: 5)),
                           ],
                         ),
-                      ),
-                    ),
                   ),
                   Positioned(
                     top: 15,

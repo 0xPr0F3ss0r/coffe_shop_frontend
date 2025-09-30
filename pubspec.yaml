@@ -37,6 +37,8 @@ dependencies:
   google_fonts: ^6.3.1
   get: ^4.7.2
   timeline_tile: ^2.0.0
+  flutter_animate: ^4.5.2
+  animated_text_kit: ^4.2.3
 
 dev_dependencies:
   flutter_test:

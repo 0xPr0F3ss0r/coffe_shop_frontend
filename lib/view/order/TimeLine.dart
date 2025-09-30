@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -70,13 +71,20 @@ class TimeLine extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              status,
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF212220),
-                                fontSize: 20,
-                              ),
+                            AnimatedTextKit(
+                              repeatForever: true,
+                              pause: Duration(milliseconds: 500),
+                              animatedTexts: [
+                                TyperAnimatedText(
+                                  status,
+                                  textStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF212220),
+                                    fontSize: 20,
+                                  ),
+                                  speed: Duration(seconds: 2),
+                                ),
+                              ],
                             ),
                             Text(isLast ? "......." : "20-12-2022"),
                           ],

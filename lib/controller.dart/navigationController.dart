@@ -6,7 +6,5 @@ class Navigationcontroller extends GetxController {
 
   void onPageChange(int index) {
     pageIndex.value = index;
-
-    print("page index is ${pageIndex}");
   }
 }

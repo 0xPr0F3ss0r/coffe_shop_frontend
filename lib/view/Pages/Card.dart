@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:coffe_shop_ui/view/ProductInfo/productInfo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,13 +35,21 @@ class _CardPageState extends State<CardPage> {
                   child: Image.asset("assets/carbon_delivery.png"),
                 ),
                 SizedBox(height: 10),
-                Text(
-                  "YOUR ORDER:",
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF000000),
-                    fontSize: 17,
-                  ),
+                AnimatedTextKit(
+                  repeatForever: true,
+                  pause: Duration(milliseconds: 500),
+                  animatedTexts: [
+                    TyperAnimatedText(
+                      curve: Curves.linear,
+                      "YOUR ORDER:",
+                      textStyle: GoogleFonts.oswald(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF000000),
+                        fontSize: 17,
+                      ),
+                      speed: Duration(seconds: 2),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 25),
                 ...List.generate(2, (int index) {
@@ -51,46 +61,67 @@ class _CardPageState extends State<CardPage> {
                           onTap: () {
                             Get.to(Productinfo());
                           },
-                          child: Container(
-                            width: 346,
-                            height: 90,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFFFFFFF),
-                              borderRadius: BorderRadius.circular(13),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFF000000).withOpacity(0.25),
-                                  offset: const Offset(0, 0),
-                                  blurRadius: 4,
-                                  spreadRadius: 0,
+                          child:
+                              Container(
+                                width: 346,
+                                height: 90,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFFFFFF),
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(
+                                        0xFF000000,
+                                      ).withOpacity(0.25),
+                                      offset: const Offset(0, 0),
+                                      blurRadius: 4,
+                                      spreadRadius: 0,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(images[index]),
-                                  SizedBox(width: 5),
-                                  Column(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(names[index]),
-                                      SizedBox(height: 5),
-                                      Text(
-                                        prices[index],
-                                        style: TextStyle(fontSize: 12),
+                                      Image.asset(images[index]),
+                                      SizedBox(width: 5),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(names[index]),
+                                          SizedBox(height: 5),
+                                          Text(
+                                            prices[index],
+                                            style: TextStyle(fontSize: 12),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
+                                ),
+                              ).animate(
+                                onPlay: (controller) =>
+                                    controller.repeat(reverse: true),
+                                effects: [
+                                  FadeEffect(
+                                    begin: 1.0,
+                                    end: 0.2,
+                                    curve: Curves.easeInQuart,
+                                    delay: Duration(seconds: 1),
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                  ShimmerEffect(
+                                    blendMode: BlendMode.hardLight,
+                                    delay: Duration(seconds: 1),
+                                  ),
                                 ],
                               ),
-                            ),
-                          ),
                         ),
                         Positioned(
                           top: 15,
@@ -162,14 +193,21 @@ class _CardPageState extends State<CardPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      "Total: 14\$",
-                      textAlign: TextAlign.end,
-                      style: GoogleFonts.oswald(
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF000000),
-                        fontSize: 17,
-                      ),
+                    AnimatedTextKit(
+                      repeatForever: true,
+                      pause: Duration(milliseconds: 500),
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          "Total: 14\$",
+                          textAlign: TextAlign.end,
+                          textStyle: GoogleFonts.oswald(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF000000),
+                            fontSize: 17,
+                          ),
+                          speed: Duration(seconds: 2),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -179,38 +217,53 @@ class _CardPageState extends State<CardPage> {
                   onTap: () {
                     Get.to(orderCard());
                   },
-                  child: Container(
-                    height: 55,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 22, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Go to Cart",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
+                  child:
+                      Container(
+                        height: 55,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 22, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Go to Cart",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
 
-                          Spacer(),
-                          IconButton(
-                            alignment: AlignmentDirectional.centerEnd,
-                            onPressed: () {
-                              Get.to(orderCard());
-                            },
-                            icon: Icon(
-                              Icons.arrow_forward_ios_sharp,
-                              color: Colors.white,
-                            ),
+                              Spacer(),
+                              IconButton(
+                                alignment: AlignmentDirectional.centerEnd,
+                                onPressed: () {
+                                  Get.to(orderCard());
+                                },
+                                icon: Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ).animate(
+                        onInit: (controller) => controller = controller,
+                        delay: Duration(seconds: 1),
+                        onPlay: (controller) =>
+                            controller.repeat(reverse: true),
+                        effects: [
+                          ShimmerEffect(
+                            blendMode: BlendMode.hardLight,
+                            delay: Duration(seconds: 1),
                           ),
                         ],
                       ),
-                    ),
-                  ),
                 ),
               ],
             ),

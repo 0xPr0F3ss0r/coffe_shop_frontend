@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,12 +30,19 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Lora Roberts',
-                    style: GoogleFonts.baloo2(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17.52,
-                    ),
+                  AnimatedTextKit(
+                    repeatForever: true,
+                    pause: Duration(milliseconds: 500),
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        'Lora Roberts',
+                        textStyle: GoogleFonts.baloo2(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17.52,
+                        ),
+                        speed: Duration(seconds: 2),
+                      ),
+                    ],
                   ),
                   SizedBox(width: 5),
                   Image.asset("assets/edit-02.png"),

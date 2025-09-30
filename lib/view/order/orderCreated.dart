@@ -1,5 +1,6 @@
 import 'package:coffe_shop_ui/view/order/orderTrack.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,28 +27,39 @@ class orderCreated extends StatelessWidget {
               onTap: () {
                 Get.to(OrderTrack());
               },
-              child: Container(
-                width: 312,
-                height: 61,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  gradient: LinearGradient(
-                    colors: [Color(0xFFCB8A58), Color(0xFF562B1A)],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    "Track Your Order",
-                    style: GoogleFonts.inter(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
+              child:
+                  Container(
+                    width: 312,
+                    height: 61,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(32),
+                      gradient: LinearGradient(
+                        colors: [Color(0xFFCB8A58), Color(0xFF562B1A)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.bottomRight,
+                      ),
                     ),
+                    child: Center(
+                      child: Text(
+                        "Track Your Order",
+                        style: GoogleFonts.inter(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ).animate(
+                    onInit: (controller) => controller = controller,
+                    delay: Duration(seconds: 1),
+                    onPlay: (controller) => controller.repeat(reverse: true),
+                    effects: [
+                      ShimmerEffect(
+                        blendMode: BlendMode.hardLight,
+                        delay: Duration(seconds: 1),
+                      ),
+                    ],
                   ),
-                ),
-              ),
             ),
           ],
         ),
